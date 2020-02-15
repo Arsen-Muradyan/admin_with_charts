@@ -5,7 +5,10 @@ import json
 from .models import Book
 # Create your views here.
 def pivot_charts(request):
-  return render(request, 'dashboard_with_charts.html')
+  books = Book.objects.all()
+  return render(request, 'dashboard_with_charts.html', {
+    "books":books
+  })
 def pivot_data(request):
   books = Book.objects.all()
   data = serializers.serialize("json", books)

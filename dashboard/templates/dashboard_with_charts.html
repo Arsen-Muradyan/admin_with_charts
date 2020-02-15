@@ -13,77 +13,72 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>Document</title>
   </head>
   <body>
-    <nav
-      class="navbar has-navbar-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <p>MediaBook Admin</p>
-        </a>
-        <a
-          role="button"
-          class="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
-          <a class="navbar-item">
-            Orders
-          </a>
-          <a class="navbar-item">
-            Payments
-          </a>
-          <a class="navbar-item">
-            Books
-          </a>
+    {% include 'includes/navbar.html'%}
+    <div class="tile is-ancestor">
+      <div class="tile is-parent is-3">
+        <div class="tile is-child">
+          <aside class="menu aside">
+            <p class="menu-label has-text-primary">General</p>
+            <ul class="menu-list">
+              <li><a href="/">Dashboard</a></li>
+            </ul>
+          </aside>
         </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
+      </div>
+      <div class="tile is-parent">
+        <div class="tile is-child">
+          <canvas id="barChart" width="100%"></canvas>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <div class="tile is-child">
+          <canvas id="pieChart" width="100%"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="tile is-ancestor">
+      <div class="tile is-parent is-9" style="margin-left:auto">
+        <div class="tile is-child">
+          <div class="card">
+            <header class="card-header">
+              <p
+                class="card-header-title has-background-primary has-text-white"
+              >
+                Books
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
               </a>
-              <a class="button is-light">
-                Log in
-              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <table class="table is-fullwidth is-striped">
+                  {% for book in books %}
+                  <tr>
+                    <td width="5%">
+                      <i class="fa fa-book"></i>
+                    </td>
+                    <td>{{ book.title }}</td>
+                    <td><button class="button is-link">Show</button></td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-    <div class="columns">
-      <div class="column is-one-quarter is-narrow-mobile is-fullheight">
-        <aside class="menu aside">
-          <p class="menu-label has-text-primary">General</p>
-          <ul class="menu-list">
-            <li><a href="/">Dashboard</a></li>
-          </ul>
-        </aside>
-      </div>
-      <div class="column is-one-third">
-        <canvas id="barChart" width="200" height="200"></canvas>
-      </div>
-      <div class="column is-one-third">
-        <canvas id="pieChart" width="200" height="200"></canvas>
       </div>
     </div>
     <script src="{% static 'js/charts.js' %}"></script>
