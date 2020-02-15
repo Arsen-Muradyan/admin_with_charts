@@ -1,10 +1,91 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <nav
+      class="navbar has-navbar-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <p>MediaBook Admin</p>
+        </a>
+        <a
+          role="button"
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
+          </a>
+          <a class="navbar-item">
+            Orders
+          </a>
+          <a class="navbar-item">
+            Payments
+          </a>
+          <a class="navbar-item">
+            Books
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="columns">
+      <div class="column is-one-quarter is-narrow-mobile is-fullheight">
+        <aside class="menu aside">
+          <p class="menu-label has-text-primary">General</p>
+          <ul class="menu-list">
+            <li><a href="/">Dashboard</a></li>
+          </ul>
+        </aside>
+      </div>
+      <div class="column is-one-third">
+        <canvas id="barChart" width="200" height="200"></canvas>
+      </div>
+      <div class="column is-one-third">
+        <canvas id="pieChart" width="200" height="200"></canvas>
+      </div>
+    </div>
+    <script src="{% static 'js/charts.js' %}"></script>
+  </body>
 </html>
