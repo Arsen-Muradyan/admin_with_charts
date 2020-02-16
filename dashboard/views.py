@@ -18,3 +18,12 @@ def pivot_data(request):
     del i['model']
   data = json.dumps(data)
   return JsonResponse(data, safe=False)
+def get_single_book(request, id):
+  book = Book.objects.filter(pk=id)
+  data = serializers.serialize("json", book)
+  data = json.loads(data)
+  for i in data:
+    del i['pk']
+    del i['model']
+  data = json.dumps(data)
+  return JsonResponse(data, safe=False)
