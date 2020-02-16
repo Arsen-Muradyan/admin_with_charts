@@ -1,0 +1,6 @@
+* {
+  box-sizing: border-box !important;
+}
+.aside {
+  margin: 10px;
+}
